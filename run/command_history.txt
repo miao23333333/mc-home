@@ -1,0 +1,4 @@
+/sethome
+/home
+/home sethome
+/sethome

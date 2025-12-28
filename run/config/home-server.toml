@@ -1,0 +1,4 @@
+#Home 配置
+[settings]
+	#最大边长
+	maxLong = 500
