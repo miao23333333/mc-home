@@ -12,6 +12,7 @@ import net.minecraft.network.chat.TextColor;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.ItemLore;
+import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.xuexi.home.SetHoe;
 
@@ -30,7 +31,7 @@ public class SethomeCommand implements Command<CommandSourceStack> {
             stack.set(DataComponents.ITEM_NAME, Component.literal("一个不普通的木锄，它可以用来圈地").withStyle(ChatFormatting.GREEN));
             stack.set(DataComponents.LORE, new ItemLore(List.of(
                     Component.literal("左键选择第一点，右键选择第二点"),
-                    Component.literal("按下 Enter 确认")
+                    Component.literal("丢弃以确认")
             )));
             stack.set(Home.SET_HOE.get(), new SetHoe(true));
 
@@ -38,7 +39,9 @@ public class SethomeCommand implements Command<CommandSourceStack> {
                 commandContext.getSource().sendSuccess(() -> Component.literal("使用木锄进行选区，左键选择第一点，右键选择第二点，仅计算x和y"), true);
             } else {
                 commandContext.getSource().sendSuccess(() -> Component.literal("你的背包似乎快爆了..."), true);
+                return 0;
             }
+            HomeEvent homeEvent = new HomeEvent(source.getPlayer().getDisplayName().getString());
         }
         return 0;
     }

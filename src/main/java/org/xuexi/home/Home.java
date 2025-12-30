@@ -126,16 +126,4 @@ public class Home {
 
     }
 
-    @SubscribeEvent
-    public void onLeftClickBlock(LeftClickBlock event) {
-
-
-    }
-
-    @SubscribeEvent
-    public void onRightClickBlock(RightClickBlock event) {
-
-    }
-
-
 }
